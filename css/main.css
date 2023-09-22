@@ -57,6 +57,12 @@ main {
   padding: 10px 15px 10px 15px;
   border-radius: 25px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.write-btn:hover {
+  background: rgba(254, 111, 15, 0.8);
 }
 
 .media-info-msg {
@@ -69,7 +75,7 @@ main {
   justify-content: center;
   align-items: center;
 
-  background-color: midnightblue;
+  background-color: rgb(101, 101, 199);
 }
 
 @media screen and (max-width: 500px) {
