@@ -58,13 +58,9 @@ main {
   border-radius: 25px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-@media screen and (max-width: 380px) {
-  .media-info-msg {
-    opacity: 1;
-  }
-}
+
 .media-info-msg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -72,6 +68,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  background-color: salmon;
+
+  background-color: midnightblue;
+}
+
+@media screen and (max-width: 500px) {
+  .media-info-msg {
+    display: none;
+  }
 }
