@@ -55,4 +55,30 @@ async def get_image(item_id: int):
                 """).fetchone()[0]
     return Response(content=bytes.fromhex(image_bytes), media_type="image/*")
 
+
+@app.post('/signup')
+def signup(
+    id: Annotated[str, Form()],
+    password: Annotated[str, Form()],
+    name: Annotated[str, Form()],
+    email: Annotated[str, Form()]
+):
+    # 아이디나 이메일이 이미 있는지 확인
+    cur.execute(f"SELECT * FROM users WHERE id='{id}' OR email='{email}'")
+    existing_user = cur.fetchone()
+
+    if existing_user:
+        return '200'
+        print(existing_user)
+
+    # 원래대로 쿼리 작성
+    cur.execute(f"""
+                INSERT INTO users (id, name, email, password)
+                VALUES
+                ('{id}', '{name}', '{email}', '{password}')
+                """)
+    con.commit()
+    return '200'
+
+
 app.mount("/", StaticFiles(directory="frontend", html=True), name="static")
