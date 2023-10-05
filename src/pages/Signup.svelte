@@ -1,0 +1,54 @@
+
+    <form id="signup-form" action="/signup" method="POST">
+      <div>회원 가입</div>
+      <div>
+        <label for="id">아이디</label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          placeholder="아이디를 입력하세요."
+          required
+        />
+      </div>
+      <div>
+        <label for="password">패스워드</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="패스워드를 입력하세요."
+          required
+        />
+      </div>
+      <div>
+        <label for="password2">패스워드 확인</label>
+        <input type="password" id="password2" name="password2"
+        placeholder="패스워드를 한번 더 입력하세요." required
+        />
+      <div>
+        <label for="name">이름</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="이름을 입력하세요."
+          required
+        />
+      </div>
+      <div>
+        <label for="email">이메일</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="이메일을 입력하세요."
+          required
+        />
+      </div>
+      <div>
+        <button type="submit">회원가입</button>
+      </div>
+      <div id="info" style="color: red"></div>
+    </form>
+
