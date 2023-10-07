@@ -1,28 +1,48 @@
+<script>
+  import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+  import { user$ } from "../store";
 
-    <form id="login-form" action="/login" method="POST">
-      <div>로그인</div>
-      <div>
-        <label for="id">아이디</label>
-        <input
-          type="text"
-          id="id"
-          name="id" 
-          placeholder="아이디를 입력하세요."
-          required
-        />
-      </div>
-      <div>
-        <label for="password">패스워드</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="패스워드를 입력하세요."
-          required
-        />
-        <div>
-            <button type="submit">로그인</button>
-          </div>
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
-          <div id="info"></div>
-      </form>
+  const loginWithGoogle = async (event) => {
+    event.preventDefault();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      user$.set(user);
+      localStorage.setItem("token",token)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+</script>
+
+
+<div>
+  <div>로그인</div>
+  <button class="login-btn" on:click={loginWithGoogle}>
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <img class="google-img" src="https://w7.pngwing.com/pngs/869/485/png-transparent-google-logo-computer-icons-google-text-logo-google-logo-thumbnail.png">
+    <div>Google로 시작하기</div>
+  </button>
+</div>
+
+<style>
+  .login-btn {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border: 1px solid gray;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .google-img {
+    width: 20px;
+    height: 20px;
+  }
+</style>

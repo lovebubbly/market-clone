@@ -11,12 +11,18 @@ footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: nowrap; /* 줄 바꿈 방지 */
 }
-.footer-icons img {
+.footer-icons__img {
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-icons__img img {
+  max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 100%로 제한 */
+  height: auto; /* 높이를 자동으로 설정 */
 }
 .footer-icons {
   font-size: 10px;
@@ -25,6 +31,9 @@ footer {
   justify-content: center;
   align-items: center;
   margin: 0 10px 0 10px;
+  width: auto; /* 너비를 자동으로 설정 */
+  max-width: 60px; /* 최대 너비를 제한 */
+  margin: 0 10px; /* 좌우 마진 설정 */
   cursor: pointer;
 }
 .footer-icons__desc {
